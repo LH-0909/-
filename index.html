@@ -18,14 +18,14 @@
 
 <div class="container">
   <div style="text-align:center;padding:12px 0 4px;color:#666;font-size:0.9rem">
-    共 <strong>11</strong> 个单元 · <strong id="total-count">--</strong> 道选择题 · 支持练习和测验模式
+    共 <strong id="unit-count">--</strong> 个单元 · <strong id="total-count">--</strong> 道选择题 · 支持练习和测验模式
   </div>
 
   <div class="unit-grid" id="unit-grid"></div>
 
   <div style="text-align:center;margin-top:20px" id="vip-section">
     <h2 style="color:#8B0000;margin-bottom:12px">🔒 VIP 套题</h2>
-    <div style="color:#666;font-size:0.85rem;margin-bottom:12px">共 <strong>45</strong> 套 · <strong id="vip-total-count">--</strong> 道选择题</div>
+    <div style="color:#666;font-size:0.85rem;margin-bottom:12px">共 <strong id="vip-unit-count">--</strong> 套 · <strong id="vip-total-count">--</strong> 道选择题</div>
     <div class="unit-grid" id="vip-grid"></div>
   </div>
 
@@ -50,6 +50,9 @@ function toggleHeader() {
   const header = document.getElementById('app-header');
   header.classList.toggle('collapsed');
 }
+
+// Dynamic counts
+$('#unit-count').textContent = UNITS.length;
 
 // Count total questions
 let total = 0;
@@ -83,6 +86,7 @@ if (typeof VIP_UNITS !== 'undefined' && VIP_UNITS.length > 0) {
   let vipTotal = 0;
   VIP_UNITS.forEach(u => vipTotal += u.questions.length);
   $('#vip-total-count').textContent = vipTotal;
+  $('#vip-unit-count').textContent = VIP_UNITS.length;
 
   const vipGrid = $('#vip-grid');
   VIP_UNITS.forEach(unit => {

@@ -807,12 +807,12 @@ body {
 </header>
 <div class="container">
   <div style="text-align:center;padding:12px 0 4px;color:#666;font-size:0.9rem">
-    共 <strong>11</strong> 个单元 · <strong id="total-count">--</strong> 道选择题 · 单选+多选 · 练习+测验
+    共 <strong id="unit-count">--</strong> 个单元 · <strong id="total-count">--</strong> 道选择题 · 单选+多选 · 练习+测验
   </div>
   <div class="unit-grid" id="unit-grid"></div>
   <div style="text-align:center;margin-top:20px" id="vip-section">
     <h2 style="color:#8B0000;margin-bottom:12px">🔒 VIP 套题</h2>
-    <div style="color:#666;font-size:0.85rem;margin-bottom:12px">共 <strong>45</strong> 套 · <strong id="vip-total-count">--</strong> 道选择题</div>
+    <div style="color:#666;font-size:0.85rem;margin-bottom:12px">共 <strong id="vip-unit-count">--</strong> 套 · <strong id="vip-total-count">--</strong> 道选择题</div>
     <div class="unit-grid" id="vip-grid"></div>
   </div>
   <div style="text-align:center;margin-top:16px">
@@ -1811,6 +1811,7 @@ window.addEventListener('hashchange', function() {
 
 // ====== HOME PAGE ======
 function renderHomeData() {
+  document.getElementById('unit-count').textContent = UNITS.length;
   var total = 0;
   UNITS.forEach(function(u) { total += u.questions.length; });
   document.getElementById('total-count').textContent = total;
@@ -1831,6 +1832,7 @@ function renderHomeData() {
     VIP_UNITS.forEach(function(u) { vipTotal += u.questions.length; });
     var vipSection = document.getElementById('vip-section');
     if (vipSection) {
+      document.getElementById('vip-unit-count').textContent = VIP_UNITS.length;
       document.getElementById('vip-total-count').textContent = vipTotal;
       var vipGrid = document.getElementById('vip-grid');
       vipGrid.innerHTML = '';

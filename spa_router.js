@@ -52,7 +52,7 @@ var VIP_PASSWORD = '1739819660';
 var VIP_UNLOCKED_KEY = 'xisixiang_vip_unlocked';
 
 function isVipUnit(uid) {
-  return uid >= 12;
+  return uid >= 13;
 }
 
 function isVipUnlocked() {

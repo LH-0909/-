@@ -69,5 +69,5 @@ function findUnit(uid) {
 // ====== 判断是否为VIP单元 ======
 
 function isVipUnit(uid) {
-  return uid >= 12;
+  return uid >= 13;
 }
